@@ -6,6 +6,7 @@
 // External Dependencies
 
 import React from 'react';
+import { Query } from 'react-apollo';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -14,6 +15,7 @@ import { withRouter } from 'react-router-dom';
 
 import * as routes from '../../constants/routes';
 import { setAuthenticatedUser } from '../../actions/SessionActions';
+import { GRAPHQL_SERVER_URL } from '../../constants';
 
 /**
  * Login component
@@ -65,7 +67,7 @@ const Login = ({ setAuthenticatedUser, history }) => {
             };
 
             const { data } = await axios.post(
-                'http://localhost:5000/graphql',
+                GRAPHQL_SERVER_URL,
                 requestBody
             )
 

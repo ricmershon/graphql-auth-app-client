@@ -12,6 +12,7 @@ import axios from 'axios';
 // Internal Dependencies
 
 import { SESSION_ACTIONS } from '../../actions/SessionActions';
+import { GRAPHQL_SERVER_URL } from '../../constants';
 
 /**
  * authenticateUser() custom executes on page load and checks
@@ -37,7 +38,9 @@ const authenticateUser = async (dispatch) => {
                 `
             }
 
-            const { data } = await axios.post('http://localhost:5000/graphql', requestBody);
+            const { data } = await axios.post(
+                GRAPHQL_SERVER_URL, requestBody
+            );
             const user = data.data.verifyToken;
 
             if (user) {
