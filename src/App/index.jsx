@@ -17,7 +17,7 @@ import PageNotFound from '../components/PageNotFound'
 import SignUp from '../components/SignUp';
 import Login from '../components/Login';
 import Navigation from '../components/Navigation';
-import useWithAuthentication from '../components/WithAuthenticate'
+import useWithAuthentication from '../components/WithAuthentication'
 
 /**
  * App: Main app component
