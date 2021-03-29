@@ -6,7 +6,6 @@
 // External Dependencies
 
 import React from 'react';
-import { Query } from 'react-apollo';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
