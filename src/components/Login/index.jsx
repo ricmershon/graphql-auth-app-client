@@ -56,10 +56,16 @@ const Login = ({ setAuthenticatedUser, history }) => {
             const requestBody = {
                 query: `
                     query {
-                        authenticateUser(email: "${email}", password: "${password}") {
+                        authenticateUser(
+                            email: "${email}", password: "${password}"
+                        ) {
                             _id
                             token
                             email
+                            firstName
+                            lastName
+                            organization
+                            badgeNumber
                         }
                     }
                 `
@@ -77,13 +83,13 @@ const Login = ({ setAuthenticatedUser, history }) => {
                 setError(null);
                 setLoading(false);
 
-                const { _id, token } = await data.data.authenticateUser;
+                const { _id, token, firstName, lastName } = await data.data.authenticateUser;
 
                 // Set authorized user in redux store, store token
                 // in localStorage in browser and redirect user to
                 // home page.
 
-                setAuthenticatedUser(_id, email);
+                setAuthenticatedUser(_id, email, firstName, lastName);
                 localStorage.setItem('GRAPHQL_APP_TOKEN', token)
                 history.push(routes.HOME);
             }
@@ -128,8 +134,8 @@ const Login = ({ setAuthenticatedUser, history }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    setAuthenticatedUser: (_id, email) => dispatch(
-        setAuthenticatedUser(_id, email)
+    setAuthenticatedUser: (_id, email, firstName, lastName) => dispatch(
+        setAuthenticatedUser(_id, email, firstName, lastName)
     )
 })
 

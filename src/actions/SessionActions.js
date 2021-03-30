@@ -21,12 +21,14 @@ export const SESSION_ACTIONS = keyMirror({
  * @param {string} email: user's email address
  */
 
-export const setAuthenticatedUser = (_id, email) => ({
+export const setAuthenticatedUser = (_id, email, firstName, lastName) => ({
     type: SESSION_ACTIONS.SET_AUTH_USER,
     payload: {
         authenticatedUser: {
             _id: _id,
-            email: email
+            email: email,
+            firstName: firstName,
+            lastName: lastName
         }
     }
 })
